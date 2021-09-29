@@ -1,5 +1,5 @@
-const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = require('./index');
+const { DataTypes } = require('sequelize');
+const db = require('./index');
 
 // class User extends Model { }
 
@@ -14,14 +14,20 @@ const sequelize = require('./index');
 //     }
 // );
 
+  
 module.exports = (sequelize, DataTypes) => {
     const User = sequelize.define('User', {
         username: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            allowNull: false
         },
-        email: {
-            type: DataTypes.STRING
-        },
+        age: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        }
+    },
+    {
+        timestamps: false
     });
     return User;
 };
